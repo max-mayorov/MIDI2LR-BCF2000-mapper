@@ -1,6 +1,7 @@
 {
-  "name": "angular2-quickstart",
-  "version": "1.0.0",
+  "name": "MIDI2LR-BCF2000-mapper",
+  "version": "0.1.0",
+  "description": "Create a mapping files for MIDI2LR and BCF2000 controller",
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",
