@@ -1,0 +1,65 @@
+<div class="bcf2000">
+  <h2>BCF2000 layout</h2>
+  <div class="secMain" ng-controller="Main">
+    <div class="encGroup1">      
+      <encoder [id]="n" *ngFor="let n of range(1,8)"></encoder>
+      <key [id]="n" *ngFor="let n of range(1,8)"></key>
+    </div>
+    <div class="encGroup2" ng-show="egroups>=2">      
+      <encoder [id]="n" *ngFor="let n of range(9,16)"></encoder>
+      <key [id]="n" *ngFor="let n of range(9,16)"></key>
+    </div>
+    <div class="encGroup2" ng-show="egroups>=3">      
+      <encoder [id]="n" *ngFor="let n of range(17,24)"></encoder>
+      <key [id]="n" *ngFor="let n of range(17,24)"></key>
+    </div>
+    <div class="encGroup2" ng-show="egroups==4">      
+      <encoder [id]="n" *ngFor="let n of range(25,32)"></encoder>
+      <key [id]="n" *ngFor="let n of range(25,32)" ></key>
+    </div>
+
+    <div class="topBtnRow">      
+      <key [id]="n" *ngFor="let n of range(33,40)"></key>
+    </div>
+    <div class="topBtnRow">      
+      <key [id]="n" *ngFor="let n of range(41,48)"></key>
+    </div>
+
+    <div class="faders">
+        <fader [id]="n" *ngFor="let n of range(1,8)"></fader>
+    </div>
+  </div>
+  <div class="secControls">
+    <div class="enckeys">
+     <!--
+         EncoderGroups Available
+keys/encoders
+via push encoders
+Functions of keys in ENCODER GROUPS
+Top left Top right Bottom left Bottom right
+1 1 .. 8 key 57 key 58 key 59 key 60
+2 1 .. 16 Group 1 Group 2 key 59 key 60
+3 1 .. 24 Group 1 Group 2 Group 3 key 60
+4 1 .. 32 Group 1 Group 2 Group 3 Group 4
+-->
+      <key [id]="57" ng-show="egroups==1" ></key>
+      <key [id]="58" ng-show="egroups==1" ></key>
+      <key [id]="59" ng-show="egroups<=2" ></key>
+      <key [id]="60" ng-show="egroups<=3" ></key>
+    </div>
+    
+    <div class="functionKeys"  >
+      <key [id]="n" *ngFor="let n of range(53,56)"></key>
+    </div>
+    
+    <div class="navKeys"  >
+      <key [id]="63" ng-show="lock===true"></key>
+      <key [id]="64" ng-show="lock===true"></key>
+    </div>
+    
+    <div class="userKeys" >
+      <key [id]="n" *ngFor="let n of range(49,52)"></key>
+    </div>
+
+  </div>
+</div>
