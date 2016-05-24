@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var bcf2000_component_1 = require('./components/bcf2000/bcf2000.component');
 var lrCommands_component_1 = require('./components/lrCommands/lrCommands.component');
+var ng2_dragula_1 = require('ng2-dragula/ng2-dragula');
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -18,7 +19,8 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             template: "<h1>MIDI2LR BCF2000 mapper</h1>\n  <bcf2000>Loading</bcf2000>\n  <lrCommands>Loading</lrCommands>\n  ",
-            directives: [bcf2000_component_1.Bcf2000Component, lrCommands_component_1.LrCommandsComponent]
+            directives: [bcf2000_component_1.Bcf2000Component, lrCommands_component_1.LrCommandsComponent, ng2_dragula_1.Dragula],
+            viewProviders: [ng2_dragula_1.DragulaService],
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
