@@ -2,31 +2,31 @@
   <h2>BCF2000 layout</h2>
   <div class="secMain" ng-controller="Main">
     <div class="encGroup">      
-      <encoder [id]="n" *ngFor="let n of range(1,8)"></encoder>
-      <key [id]="n" *ngFor="let n of range(1,8)"></key>
+      <control [name]='"encoder"' [id]="n" *ngFor="let n of range(1,8)"></control>
+      <control [name]='"key"' [id]="n" *ngFor="let n of range(1,8)"></control>
     </div>
     <div class="encGroup" ng-show="egroups>=2">      
-      <encoder [id]="n" *ngFor="let n of range(9,16)"></encoder>
-      <key [id]="n" *ngFor="let n of range(9,16)"></key>
+      <control [name]='"encoder"' [id]="n" *ngFor="let n of range(9,16)"></control>
+      <control [name]='"key"' [id]="n" *ngFor="let n of range(9,16)"></control>
     </div>
     <div class="encGroup" ng-show="egroups>=3">      
-      <encoder [id]="n" *ngFor="let n of range(17,24)"></encoder>
-      <key [id]="n" *ngFor="let n of range(17,24)"></key>
+      <control [name]='"encoder"' [id]="n" *ngFor="let n of range(17,24)"></control>
+      <control [name]='"key"' [id]="n" *ngFor="let n of range(17,24)"></control>
     </div>
     <div class="encGroup" ng-show="egroups==4">      
-      <encoder [id]="n" *ngFor="let n of range(25,32)"></encoder>
-      <key [id]="n" *ngFor="let n of range(25,32)" ></key>
+      <control [name]='"encoder"' [id]="n" *ngFor="let n of range(25,32)"></control>
+      <control [name]='"key"' [id]="n" *ngFor="let n of range(25,32)" ></control>
     </div>
 
     <div class="buttonRow">      
-      <key [id]="n" *ngFor="let n of range(33,40)"></key>
+      <control [name]='"key"' [id]="n" *ngFor="let n of range(33,40)"></control>
     </div>
     <div class="buttonRow">      
-      <key [id]="n" *ngFor="let n of range(41,48)"></key>
+      <control [name]='"key"' [id]="n" *ngFor="let n of range(41,48)"></control>
     </div>
 
     <div class="faders">
-        <fader [id]="n" *ngFor="let n of range(1,8)"></fader>
+        <control [name]='"fader"' [id]="n" *ngFor="let n of range(1,8)"></control>
     </div>
   </div>
   <div class="secControls">
@@ -42,23 +42,23 @@ Top left Top right Bottom left Bottom right
 3 1 .. 24 Group 1 Group 2 Group 3 key 60
 4 1 .. 32 Group 1 Group 2 Group 3 Group 4
 -->
-      <key [id]="57" ng-show="egroups==1" ></key>
-      <key [id]="58" ng-show="egroups==1" ></key>
-      <key [id]="59" ng-show="egroups<=2" ></key>
-      <key [id]="60" ng-show="egroups<=3" ></key>
+      <control [name]='"key"' [id]="57" ng-show="egroups==1" ></control>
+      <control [name]='"key"' [id]="58" ng-show="egroups==1" ></control>
+      <control [name]='"key"' [id]="59" ng-show="egroups<=2" ></control>
+      <control [name]='"key"' [id]="60" ng-show="egroups<=3" ></control>
     </div>
     
     <div class="functionKeys"  >
-      <key [id]="n" *ngFor="let n of range(53,56)"></key>
+      <control [name]='"key"' [id]="n" *ngFor="let n of range(53,56)"></control>
     </div>
     
     <div class="navKeys"  >
-      <key [id]="63" ng-show="lock===true"></key>
-      <key [id]="64" ng-show="lock===true"></key>
+      <control [name]='"key"' [id]="63" ng-show="lock===true"></control>
+      <control [name]='"key"' [id]="64" ng-show="lock===true"></control>
     </div>
     
     <div class="userKeys" >
-      <key [id]="n" *ngFor="let n of range(49,52)"></key>
+      <control [name]='"key"' [id]="n" *ngFor="let n of range(49,52)"></control>
     </div>
 
   </div>

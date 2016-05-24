@@ -9,9 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var encoder_component_1 = require('./encoder.component');
-var fader_component_1 = require('./fader.component');
-var key_component_1 = require('./key.component');
+var control_component_1 = require('./control.component');
 var Bcf2000Component = (function () {
     function Bcf2000Component() {
     }
@@ -25,7 +23,7 @@ var Bcf2000Component = (function () {
         core_1.Component({
             selector: 'bcf2000',
             templateUrl: 'app/components/bcf2000/bcf2000.component.html',
-            directives: [encoder_component_1.EncoderComponent, fader_component_1.FaderComponent, key_component_1.KeyComponent],
+            directives: [control_component_1.ControlComponent],
             styleUrls: ['app/components/bcf2000/bcf2000.component.css']
         }), 
         __metadata('design:paramtypes', [])

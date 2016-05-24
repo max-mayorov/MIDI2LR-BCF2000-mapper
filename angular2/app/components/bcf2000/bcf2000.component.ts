@@ -1,14 +1,11 @@
 import { Component} from '@angular/core';
 
-import { EncoderComponent } from './encoder.component';
-import { FaderComponent } from './fader.component';
-import { KeyComponent } from './key.component';
-
+import { ControlComponent } from './control.component';
 
 @Component({
   selector: 'bcf2000',
   templateUrl: 'app/components/bcf2000/bcf2000.component.html',
-  directives: [EncoderComponent, FaderComponent, KeyComponent],
+  directives: [ControlComponent],
   styleUrls: ['app/components/bcf2000/bcf2000.component.css']
 })
 export class Bcf2000Component {

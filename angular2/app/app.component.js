@@ -18,7 +18,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<h1>MIDI2LR BCF2000 mapper</h1>\n  <bcf2000>Loading</bcf2000>\n  <lrCommands>Loading</lrCommands>\n  ",
+            template: "<h1>MIDI2LR BCF2000 mapper</h1>\n   <bcf2000>Loading</bcf2000> \n   <lrCommands>Loading</lrCommands> \n  <div>\n    <div class=\"container\" [dragula]='\"abag\"'>\n      <div>1</div>\n      <div>2</div>\n    </div>\n  </div>\n    <div  class=\"container\" [dragula]='\"abag\"'>\n      <div>3</div>\n      <div>4</div>\n    </div>\n  ",
             directives: [bcf2000_component_1.Bcf2000Component, lrCommands_component_1.LrCommandsComponent, ng2_dragula_1.Dragula],
             viewProviders: [ng2_dragula_1.DragulaService],
         }), 

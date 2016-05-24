@@ -8,13 +8,15 @@
     'app':                        'app', // 'dist',
     '@angular':                   'node_modules/@angular',
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
-    'rxjs':                       'node_modules/rxjs'
+    'rxjs':                       'node_modules/rxjs',
+    'ng2-dragula':                'node_modules/ng2-dragula'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
     'app':                        { main: 'main.js',  defaultExtension: 'js' },
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { defaultExtension: 'js' },
+    'ng2-dragula':                { defaultExtension: 'js' }
   };
   var ngPackageNames = [
     'common',
@@ -26,14 +28,20 @@
     'router',
     'router-deprecated',
     'upgrade',
+    'ng2-dragula'
   ];
+ var paths = {
+          'dragula': 'node_modules/dragula/dist/dragula.js',
+          'ng2-dragula/*': 'node_modules/ng2-dragula/ng2-dragula.js'
+ };
   // Add package entries for angular packages
   ngPackageNames.forEach(function(pkgName) {
     packages['@angular/'+pkgName] = { main: pkgName + '.umd.js', defaultExtension: 'js' };
   });
   var config = {
     map: map,
-    packages: packages
+    packages: packages,
+    paths: paths
   }
   System.config(config);
 })(this);
