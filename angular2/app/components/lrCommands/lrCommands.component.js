@@ -9,18 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var EncoderComponent = (function () {
-    function EncoderComponent() {
+var LrCommandsComponent = (function () {
+    function LrCommandsComponent() {
     }
-    EncoderComponent = __decorate([
+    LrCommandsComponent.prototype.getAll = function () {
+        return [
+            "Exposure",
+            "Contrast"
+        ];
+    };
+    LrCommandsComponent = __decorate([
         core_1.Component({
-            selector: 'encoder',
-            template: "ENCODER {{id}}",
-            properties: ['id']
+            selector: 'lrCommands',
+            templateUrl: 'app/components/lrCommands/lrCommands.component.html',
+            styleUrls: ['app/components/lrCommands/lrCommands.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], EncoderComponent);
-    return EncoderComponent;
+    ], LrCommandsComponent);
+    return LrCommandsComponent;
 }());
-exports.EncoderComponent = EncoderComponent;
-//# sourceMappingURL=encoder.component.js.map
+exports.LrCommandsComponent = LrCommandsComponent;
+//# sourceMappingURL=lrCommands.component.js.map

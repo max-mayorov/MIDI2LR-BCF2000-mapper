@@ -15,7 +15,7 @@ var FaderComponent = (function () {
     FaderComponent = __decorate([
         core_1.Component({
             selector: 'fader',
-            template: "FADER {{id}}",
+            templateUrl: 'app/components/bcf2000/fader.component.html',
             properties: ['id']
         }), 
         __metadata('design:paramtypes', [])

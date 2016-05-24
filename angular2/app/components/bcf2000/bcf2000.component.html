@@ -1,27 +1,27 @@
 <div class="bcf2000">
   <h2>BCF2000 layout</h2>
   <div class="secMain" ng-controller="Main">
-    <div class="encGroup1">      
+    <div class="encGroup">      
       <encoder [id]="n" *ngFor="let n of range(1,8)"></encoder>
       <key [id]="n" *ngFor="let n of range(1,8)"></key>
     </div>
-    <div class="encGroup2" ng-show="egroups>=2">      
+    <div class="encGroup" ng-show="egroups>=2">      
       <encoder [id]="n" *ngFor="let n of range(9,16)"></encoder>
       <key [id]="n" *ngFor="let n of range(9,16)"></key>
     </div>
-    <div class="encGroup2" ng-show="egroups>=3">      
+    <div class="encGroup" ng-show="egroups>=3">      
       <encoder [id]="n" *ngFor="let n of range(17,24)"></encoder>
       <key [id]="n" *ngFor="let n of range(17,24)"></key>
     </div>
-    <div class="encGroup2" ng-show="egroups==4">      
+    <div class="encGroup" ng-show="egroups==4">      
       <encoder [id]="n" *ngFor="let n of range(25,32)"></encoder>
       <key [id]="n" *ngFor="let n of range(25,32)" ></key>
     </div>
 
-    <div class="topBtnRow">      
+    <div class="buttonRow">      
       <key [id]="n" *ngFor="let n of range(33,40)"></key>
     </div>
-    <div class="topBtnRow">      
+    <div class="buttonRow">      
       <key [id]="n" *ngFor="let n of range(41,48)"></key>
     </div>
 

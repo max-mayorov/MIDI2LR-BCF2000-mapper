@@ -9,18 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var KeyComponent = (function () {
-    function KeyComponent() {
+var EncoderComponent = (function () {
+    function EncoderComponent() {
     }
-    KeyComponent = __decorate([
+    EncoderComponent = __decorate([
         core_1.Component({
-            selector: 'key',
-            template: "KEY {{id}}",
+            selector: 'encoder',
+            templateUrl: 'app/components/bcf2000/encoder.component.html',
             properties: ['id']
         }), 
         __metadata('design:paramtypes', [])
-    ], KeyComponent);
-    return KeyComponent;
+    ], EncoderComponent);
+    return EncoderComponent;
 }());
-exports.KeyComponent = KeyComponent;
-//# sourceMappingURL=key.component.js.map
+exports.EncoderComponent = EncoderComponent;
+//# sourceMappingURL=encoder.component.js.map

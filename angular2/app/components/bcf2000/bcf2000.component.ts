@@ -7,9 +7,9 @@ import { KeyComponent } from './key.component';
 
 @Component({
   selector: 'bcf2000',
-  templateUrl: 'app/bcf2000.component.html',
-  directives: [EncoderComponent, FaderComponent, KeyComponent]
-  //styleUrls: ['app/hero-detail.component.css']
+  templateUrl: 'app/components/bcf2000/bcf2000.component.html',
+  directives: [EncoderComponent, FaderComponent, KeyComponent],
+  styleUrls: ['app/components/bcf2000/bcf2000.component.css']
 })
 export class Bcf2000Component {
       range(min,max){
