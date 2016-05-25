@@ -5,7 +5,7 @@
         "**/.git": true,
         "**/.svn": true,
         "**/.DS_Store": true,
-        "**/app/**/*.js": true,
-        "**/app/**/*.js.map": true
-    },
+        "**/angular2/app/**/*.js": true,
+        "**/angular2/app/**/*.js.map": true
+    }
 }
