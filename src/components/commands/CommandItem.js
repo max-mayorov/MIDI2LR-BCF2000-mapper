@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import { Draggable, Droppable } from 'react-drag-and-drop'
+import { Draggable, Droppable } from 'react-drag-and-drop';
 
 const CommandItem = ({command}) => {
   return (

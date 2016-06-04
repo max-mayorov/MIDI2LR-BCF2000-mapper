@@ -23,7 +23,7 @@ const commands = [
     type: "button",
     name: "prevImage",
     text: "Prev"
-  },
+  }
 ];
 
 

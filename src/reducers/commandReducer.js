@@ -7,9 +7,11 @@ export default function commandReducer(state = initialState.commands, action) {
       return action.commands;
 
     case types.USE_COMMAND:
-      var newState = [...state];
-      var idx = newState.findIndex(item => item.name == action.command.name);
-      newState.splice(idx, 1, 
+    {
+      let newState = [...state];
+      newState.splice(
+        newState.findIndex(item => item.name == action.command.name), 
+        1, 
         Object.assign(
           {}, 
           action.command, 
@@ -18,7 +20,8 @@ export default function commandReducer(state = initialState.commands, action) {
               : action.command.usageCount+1}
         ));
       return newState;
-      
+    }
+     
     default:
       return state;
   }

@@ -6,5 +6,5 @@ export function loadCommands() {
 }
 
 export function useCommand(command) {
-    return { type: types.USE_COMMAND, command: command}
+    return { type: types.USE_COMMAND, command: command};
 }
