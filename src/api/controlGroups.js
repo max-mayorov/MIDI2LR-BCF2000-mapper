@@ -1,0 +1,10 @@
+
+export const ENCODER_GROUP1 = 'ENCODER_GROUP1';
+export const ENCODER_GROUP2 = 'ENCODER_GROUP2';
+export const ENCODER_GROUP3 = 'ENCODER_GROUP3';
+export const ENCODER_GROUP4 = 'ENCODER_GROUP4';
+export const UPPER_ROW_KEYS = 'UPPER_ROW_KEYS';
+export const LOWER_ROW_KEYS = 'LOWER_ROW_KEYS';
+export const USER_KEYS = 'USER_KEYS';
+export const FUNCTION_KEYS = 'FUNCTION_KEYS';
+export const FADERS = 'FADERS';

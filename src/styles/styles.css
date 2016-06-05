@@ -14,3 +14,19 @@ a.active {
 nav {
   padding-top: 20px;
 }
+
+.control{
+  width:80px;
+  float:left;
+}
+
+.group
+{
+  width:800px;
+  height:50px;
+}
+
+.clear
+{
+  clear:both;
+}
