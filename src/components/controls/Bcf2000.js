@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-import { Draggable, Droppable } from 'react-drag-and-drop';
 import * as groups from '../../api/controlGroups';
 import Control from './Control'; //eslint-disable-line import/no-named-as-default
 /*eslint-disable react/jsx-key*/

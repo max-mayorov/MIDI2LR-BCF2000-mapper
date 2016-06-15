@@ -1,10 +1,12 @@
 import * as groups from './controlGroups';
 import * as types from './controlTypes';
+import * as acceptTypes from './commandTypes'
 
 const controls = {
     buttons: Array.from(new Array(56).keys()).map((item) => 
     ({
         type: types.BUTTON,
+        accepts: acceptTypes.BUTTON,
         id: item+1,
         group: item<8 ? groups.ENCODER_GROUP1 
                 : (item<16 ? groups.ENCODER_GROUP2
@@ -18,6 +20,7 @@ const controls = {
     
     encoders: Array.from(new Array(32).keys()).map((item) => ({ 
         type: types.ENCODER,
+        accepts: acceptTypes.SLIDER,
         id: item+1,
         group: item<8 ? groups.ENCODER_GROUP1 
                 : (item<16 ? groups.ENCODER_GROUP2
@@ -25,8 +28,11 @@ const controls = {
                 : (item<32 ? groups.ENCODER_GROUP4 : "")))
     })),
     
-    faders: Array.from(new Array(8).keys()).map((item) => 
-        ({ type: types.FADER, id: item+1, group: groups.FADERS }))
+    faders: Array.from(new Array(8).keys()).map((item) => ({ 
+        type: types.FADER, 
+        accepts: acceptTypes.SLIDER,
+        id: item+1, 
+        group: groups.FADERS }))
 };
 
 
