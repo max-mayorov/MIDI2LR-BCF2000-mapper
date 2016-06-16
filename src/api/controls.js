@@ -1,6 +1,6 @@
 import * as groups from './controlGroups';
 import * as types from './controlTypes';
-import * as acceptTypes from './commandTypes'
+import * as acceptTypes from './commandTypes';
 
 const controls = {
     buttons: Array.from(new Array(56).keys()).map((item) => 

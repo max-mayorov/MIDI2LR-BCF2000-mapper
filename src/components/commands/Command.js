@@ -21,13 +21,13 @@ const mapStateToProps = (state, ownProps) => {
     type: command.type,
     name: command.name
   };
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(commandActions, dispatch)
   };
-}
+};
 
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -55,7 +55,7 @@ export default class Command extends React.Component {
     const { name, isDropped, isDragging, connectDragSource } = this.props;
     return connectDragSource(
       <div onClick={this.useCommand}>
-        { isDropped ? <s>{name}</s> : name }
+        {isDropped ? <s>{name}</s> : name}
         <CommandItem command={this.props.command} />
       </div>
     );

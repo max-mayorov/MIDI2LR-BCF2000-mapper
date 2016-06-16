@@ -11,13 +11,13 @@ const mapStateToProps = (state, ownProps) => {
     control: control,
     accepts: control.accepts       
   };
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(controlActions, dispatch)
   };
-}
+};
 
 const dustbinTarget = {
   drop(props, monitor) {
