@@ -10,7 +10,7 @@ export default function controlReducer(state = initialState.controls, action) {
     {
       let newState = Object.assign({}, state);
 
-      var propName = action.control.type.toLowerCase() + "s";
+      const propName = action.control.type.toLowerCase() + "s";
       //TODO: Get rid of this hack 
       newState[propName] = [...newState[propName]];
       

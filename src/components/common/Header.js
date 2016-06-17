@@ -8,6 +8,8 @@ const Header = () => {
       {" | "}
       <Link to="/mapper" activeClassName="active">Mapper</Link>
       {" | "}
+      <Link to="/output" activeClassName="active">Output</Link>
+      {" | "}
       <Link to="/about" activeClassName="active">About</Link>
     </nav>
   );
