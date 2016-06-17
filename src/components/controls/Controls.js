@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as controlActions from '../../actions/controlActions';
+import * as actions from '../../actions/actions';
 import Bcf2000  from './Bcf2000';
 
 export class Controls extends React.Component {
@@ -32,7 +32,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(controlActions, dispatch)
+    actions: bindActionCreators(actions, dispatch)
   };
 }
 

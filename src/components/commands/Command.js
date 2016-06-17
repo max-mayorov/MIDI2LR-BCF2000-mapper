@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as commandActions from '../../actions/commandActions';
+import * as actions from '../../actions/actions';
 import CommandItem from './CommandItem';
 import { DragSource } from 'react-dnd';
 
@@ -25,7 +25,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(commandActions, dispatch)
+    actions: bindActionCreators(actions, dispatch)
   };
 };
 

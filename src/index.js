@@ -9,8 +9,8 @@ import routes from './routes';
 import './styles/styles.css'; //Webpack can import CSS files too!
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
-import {loadCommands} from './actions/commandActions';
-import {loadControls} from './actions/controlActions';
+import {loadCommands} from './actions/actions';
+import {loadControls} from './actions/actions';
 
 const store = configureStore();
 store.dispatch(loadCommands());

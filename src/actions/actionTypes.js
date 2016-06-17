@@ -3,3 +3,5 @@ export const USE_COMMAND = 'USE_COMMAND';
 
 export const LOAD_CONTROLS = 'LOAD_CONTROLS';
 
+export const LINK_COMMAND_TO_CONTROL = 'LINK_COMMAND_TO_CONTROL'; 
+

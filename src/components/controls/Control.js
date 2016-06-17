@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as controlActions from '../../actions/controlActions';
+import * as actions from '../../actions/actions';
 import { DropTarget } from 'react-dnd';
 
 const mapStateToProps = (state, ownProps) => {
@@ -15,26 +15,15 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(controlActions, dispatch)
+    actions: bindActionCreators(actions, dispatch)
   };
 };
 
 const dustbinTarget = {
   drop(props, monitor) {
-    console.log(monitor.getItem().command);
-    console.log(props.control);
-    // this.setState(update(this.state, {
-    //   dustbins: {
-    //     [index]: {
-    //       lastDroppedItem: {
-    //         $set: item
-    //       }
-    //     }
-    //   },
-    //   droppedBoxNames: name ? {
-    //     $push: [name]
-    //   } : {}
-    // }));
+    const command = monitor.getItem().command;
+    props.actions.linkCommandToControl(command, props.control);
+    props.actions.useCommand(command);
   }
 };
 
@@ -57,7 +46,7 @@ export default class Control extends React.Component {
 
 
   render() {
-    const { accepts, isOver, canDrop, connectDropTarget, lastDroppedItem } = this.props;
+    const { accepts, isOver, canDrop, connectDropTarget } = this.props;
     const isActive = isOver && canDrop;
     
     let backgroundColor = '#222'; 
@@ -69,16 +58,14 @@ export default class Control extends React.Component {
 
     return connectDropTarget(
       <div className="control" style={{ backgroundColor }}>
-        {isActive ?
-          'X' :
-          accepts
+        {
+          typeof this.props.control.command == 'object'
+          ? this.props.control.command.name 
+          : '--'
         }      
         <div>
             {this.props.control.type} - {this.props.control.id}
         </div>  
-         {lastDroppedItem &&
-          <p>Last dropped: {JSON.stringify(lastDroppedItem)}</p>
-        }
       </div>
     );
   }
@@ -91,6 +78,5 @@ Control.propTypes = {
   isOver: PropTypes.bool.isRequired,
   canDrop: PropTypes.bool.isRequired,
   accepts: PropTypes.arrayOf(PropTypes.string).isRequired,
-  lastDroppedItem: PropTypes.object,
   onDrop: PropTypes.func.isRequired  
 }; 
