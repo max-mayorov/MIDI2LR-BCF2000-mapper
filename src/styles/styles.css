@@ -31,7 +31,7 @@ nav {
   clear:both;
 }
 
-.output>textarea{
+textarea{
   width:400px;
   height:400px;
   float: left;
