@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/actions';
-import StringBuilder from 'string-builder';
+import ConvertToFiles from '../../converters/convertToFiles';
 
 export class Midi2Lr extends React.Component {
   constructor(props, context) {
@@ -15,37 +15,10 @@ export class Midi2Lr extends React.Component {
 
   render() {
 
-
-  const commands = [];
-  const preset = 1;
-  const maxCodes = 95; 
-
-  for(let key in this.props.controls)
-  {  
-      this.props.controls[key].forEach((control) => {
-        if(typeof control.command != 'object')
-            return;
-        let idx = commands.indexOf(control.command.name);
-        if(idx<0){
-            idx = commands.length; 
-            commands.push(control.command.name);
-        }
-      });
-  }
-  
-  let sb = new StringBuilder();
-  sb.appendLine(`<?xml version="1.0" encoding="UTF-8"?>
-<settings>`);
-  commands.forEach((item, idx) => {
-        sb.appendFormat(`
-	<setting channel="{0}" NRPN="False" Relative="False" controller="{1}" command_string="{2}"/>`
-        , Math.floor(idx/maxCodes)+1, idx%maxCodes + 1, item);
-  });
-
-  sb.appendLine("</settings>");
-
+    const converter = new ConvertToFiles(this.props.controls);
+ 
     return (
-      <textarea value={sb} readOnly>
+      <textarea value={converter.toMidi2Lr()} readOnly>
       </textarea>
     );
   }

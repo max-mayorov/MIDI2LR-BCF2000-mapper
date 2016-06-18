@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/actions';
-import StringBuilder from 'string-builder';
+import ConvertToFiles from '../../converters/convertToFiles';
 
 export class Bcf2000 extends React.Component {
   constructor(props, context) {
@@ -14,93 +14,10 @@ export class Bcf2000 extends React.Component {
   }
 
   render() {
-    let sb = new StringBuilder( );
-    sb.appendLine(`$rev F1 ; Firmware 1.10; BC Manager 3.0.0
-$preset
-  .name 'All Toggles Off         '
-;Designed for MIDI2LR
-  .snapshot off
-  .request off
-  .egroups 4
-  .fkeys off
-  .lock off
-  .init`);
-
-  const commands = [];
-  const preset = 1;
-  const maxCodes = 95;
-
-  this.props.controls.encoders.forEach((item, index) => {
-      if(typeof item.command != 'object')
-        return;
-      
-      let idx = commands.indexOf(item.command.name);
-      if(idx<0){
-          idx = commands.length; 
-          commands.push(item.command.name);
-      }
-
-
-      sb.appendFormat(
-      `
-$encoder {0}
-  .easypar CC {1} {2} 0 127 absolute
-  .showvalue on
-  .mode 12dot
-  .resolution 96 96 96 96
-  .default 0`, item.id, Math.floor(idx/maxCodes)+1, idx%maxCodes + 1);
-  });
-
-  this.props.controls.buttons.forEach((item, index) => {
-      if(typeof item.command != 'object')
-        return;
-
-              
-      let idx = commands.indexOf(item.command.name);
-      if(idx<0){
-          idx = commands.length; 
-          commands.push(item.command.name);
-      }
-
-      
-      sb.appendFormat(
-      `
-$button {0}
-  .easypar CC {1} {2} 127 0 toggleoff
-  .showvalue on
-  .default 0`, item.id, Math.floor(idx/maxCodes)+1, idx%maxCodes + 1);
-  });
-
-
-  this.props.controls.faders.forEach((item, index) => {
-      if(typeof item.command != 'object')
-        return;
-
-              
-      let idx = commands.indexOf(item.command.name);
-      if(idx<0){
-          idx = commands.length; 
-          commands.push(item.command.name);
-      }
-
-      
-      sb.appendFormat(
-      `
-$fader {0}
-  .easypar CC {1} {2} 0 127 absolute
-  .showvalue on
-  .motor on
-  .override move
-  .keyoverride off
-  .default 63`, item.id, Math.floor(idx/maxCodes)+1, idx%maxCodes + 1);
-  });
-
-sb.appendFormat(`
-$store {0}`, preset);
-sb.appendLine("$end");
+    const converter = new ConvertToFiles(this.props.controls);
 
     return (
-      <textarea value={sb} readOnly>
+      <textarea value={converter.toBcf2000(1)} readOnly>
       </textarea>
     );
   }
