@@ -9,13 +9,14 @@ export class Midi2Lr extends React.Component {
     super(props, context);
 
     this.state = {
-      controls: Object.assign({}, props.controls)
+            presets: props.presets
+
     };
   }
 
   render() {
 
-    const converter = new ConvertToFiles(this.props.controls);
+    const converter = new ConvertToFiles(this.props.presets);
  
     return (
       <textarea value={converter.toMidi2Lr()} readOnly>
@@ -25,12 +26,12 @@ export class Midi2Lr extends React.Component {
 }
 
 Midi2Lr.propTypes = {
-  controls: PropTypes.object.isRequired
+  presets: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    controls: state.controls
+      presets: state.controlPreset.presets
   };
 }
 

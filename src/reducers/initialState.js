@@ -1,4 +1,8 @@
 export default {
   commands: [],
-  controls: {}
+  controls: {},
+  controlPreset:{
+    presets: [],
+    presetIdx: 0
+  }
 };

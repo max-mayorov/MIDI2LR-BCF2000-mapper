@@ -15,7 +15,8 @@ const boxSource = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const command = state.commands.find(item => item.name == ownProps.command.name); 
+  const command = state.commands
+    .find(item => item.name == ownProps.command.name); 
   return {
     command: command,
     type: command.type,

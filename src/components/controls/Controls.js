@@ -3,30 +3,36 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/actions';
 import Bcf2000  from './Bcf2000';
+import SelectPreset  from './SelectPreset';
 
 export class Controls extends React.Component {
   constructor(props, context) {
     super(props, context);
 
     this.state = {
-      controls: Object.assign({}, props.controls)
+      preset: Object.assign({}, props.preset)
     };
   }
 
   render() {
     return (
-      <Bcf2000 controls={this.props.controls} />
+      <div>
+        <SelectPreset 
+          preset={this.props.preset} />
+        <Bcf2000 controls={this.props.preset.controls} />
+      </div>
     );
   }
 }
 
 Controls.propTypes = {
-  controls: PropTypes.object.isRequired
+  preset: PropTypes.object.isRequired 
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    controls: state.controls
+    presetIdx: state.controlPreset.presetIdx,
+    preset: state.controlPreset.presets[state.controlPreset.presetIdx]
   };
 }
 

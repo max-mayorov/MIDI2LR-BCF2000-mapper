@@ -9,11 +9,12 @@ import routes from './routes';
 import './styles/styles.css'; //Webpack can import CSS files too!
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
-import {loadCommands, loadControls} from './actions/actions';
+import {loadCommands, loadControls, addPreset} from './actions/actions';
 
 const store = configureStore();
 store.dispatch(loadCommands());
 store.dispatch(loadControls());
+store.dispatch(addPreset("Default preset"));
 
 render(
   <Provider store={store}>

@@ -9,27 +9,27 @@ export class Bcf2000 extends React.Component {
     super(props, context);
 
     this.state = {
-      controls: Object.assign({}, props.controls)
+      presets: props.presets
     };
   }
 
   render() {
-    const converter = new ConvertToFiles(this.props.controls);
+    const converter = new ConvertToFiles(this.props.presets);
 
     return (
-      <textarea value={converter.toBcf2000(1)} readOnly>
+      <textarea value={converter.toBcf2000()} readOnly>
       </textarea>
     );
   }
 }
 
 Bcf2000.propTypes = {
-  controls: PropTypes.object.isRequired
+  presets: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    controls: state.controls
+    presets: state.controlPreset.presets
   };
 }
 

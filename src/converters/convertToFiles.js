@@ -1,24 +1,26 @@
 export default class ConvertToFiles  {
-  constructor(controls) {
+  constructor(presets) {
     const maxCodes = 95;
-    this.controls = controls;
+    this.presets = [...presets];
     this.commands = [];
-    for(let key in this.controls)
-    {  
-        this.controls[key].forEach((control) => {
-            if(typeof control.command != 'object')
-                return;
-            if(this.commands.filter(item => item.name == control.command.name).length==0){
-                const idx = this.commands.length; 
-                this.commands.push(
-                    {
-                        name: control.command.name,
-                        channel: Math.floor(idx/maxCodes)+1,
-                        code: idx%maxCodes + 1
-                    });
-            }
-        });
-    }
+    this.presets.forEach(preset => {
+      for(let key in preset.controls)
+      {  
+          preset.controls[key].forEach((control) => {
+              if(typeof control.command != 'object')
+                  return;
+              if(this.commands.filter(item => item.name == control.command.name).length==0){
+                  const idx = this.commands.length; 
+                  this.commands.push(
+                      {
+                          name: control.command.name,
+                          channel: Math.floor(idx/maxCodes)+1,
+                          code: idx%maxCodes + 1
+                      });
+              }
+          });
+      }
+    });
   }
 
   getCommandChannelCode(command)
@@ -32,11 +34,21 @@ export default class ConvertToFiles  {
         : {isFound: true, channel: value.channel, code: value.code};
   }
 
-  toBcf2000(preset){
-    let s = `$rev F1 ; Firmware 1.10; BC Manager 3.0.0
+  toBcf2000(){
+    let s = `$rev F1 ; Firmware 1.10; BC Manager 3.0.0`;
+    this.presets.forEach((preset, idx) => {
+      s += this.toBcf2000Preset(preset, idx+1);
+    });
+    s += `
+$end
+`;
+    return s;
+  }
+
+  toBcf2000Preset(preset, idx){
+    let s = `
 $preset
-  .name 'All Toggles Off         '
-;Designed for MIDI2LR
+  .name ${preset.name}
   .snapshot off
   .request off
   .egroups 4
@@ -45,7 +57,7 @@ $preset
   .init`;
 
 
-  this.controls.encoders.forEach((item) => {
+  preset.controls.encoders.forEach((item) => {
       const {isFound, channel, code} = this.getCommandChannelCode(item.command);
       if(!isFound) 
         return;
@@ -59,7 +71,7 @@ $encoder ${item.id}
   .default 0`;
   });
 
-  this.controls.buttons.forEach((item) => {
+  preset.controls.buttons.forEach((item) => {
       const {isFound, channel, code} = this.getCommandChannelCode(item.command);
       if(!isFound) 
         return;
@@ -71,7 +83,7 @@ $button ${item.id}
   .default 0`;
   });
 
-  this.controls.faders.forEach((item, index) => {
+  preset.controls.faders.forEach((item, index) => {
       const {isFound, channel, code} = this.getCommandChannelCode(item.command);
       if(!isFound) 
         return;
@@ -86,8 +98,7 @@ $fader ${item.id}
   });
 
     s+= `
-$store ${preset}
-$end`;
+$store ${idx}`;
 
     return s;
   }

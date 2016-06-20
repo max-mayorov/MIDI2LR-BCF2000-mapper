@@ -5,11 +5,13 @@ import * as actions from '../../actions/actions';
 import { DropTarget } from 'react-dnd';
 
 const mapStateToProps = (state, ownProps) => {
-  const control = state.controls[ownProps.control.type.toLowerCase()+'s']
+  const control = state.controlPreset
+            .presets[state.controlPreset.presetIdx]
+            .controls[ownProps.control.type.toLowerCase()+'s']
             .find(item => item.id == ownProps.control.id); 
   return {
     control: control,
-    accepts: control.accepts       
+    accepts: control.accepts
   };
 };
 
