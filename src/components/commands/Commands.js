@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/actions';
 import CommandsList  from './CommandsList';
+import * as groups from '../../api/commandGroups.js';
+import { Accordion, Panel } from "rec-accordion";
 
 export class Commands extends React.Component {
   constructor(props, context) {
@@ -15,7 +17,15 @@ export class Commands extends React.Component {
 
   render() {
     return (
-      <CommandsList commands={this.props.commands} />
+      <div className="commandsPanel">
+        <Accordion>
+        {groups.ALL_GROUPS.map(item =>
+          <Panel title={item} key={item}>
+            <CommandsList commands={this.props.commands} group={item}/>
+          </Panel>
+        )}
+        </Accordion>
+      </div>
     );
   }
 }

@@ -22,7 +22,7 @@ nav {
 
 .group
 {
-  width:700px;
+  width:650px;
   height:50px;
 }
 
@@ -41,4 +41,19 @@ textarea{
   float:right;
   clear:both;
   padding:5px 0;
+}
+
+.accordion {
+  float:left;
+  width:250px;
+}
+
+.bcf2000 {
+  float:left;
+  width:650px;
+}
+
+.user_keys,
+.function_keys{
+  padding-left:300px;
 }
