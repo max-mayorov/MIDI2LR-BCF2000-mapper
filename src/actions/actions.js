@@ -37,18 +37,18 @@ export function addPreset(name){
     return {type: types.ADD_PRESET, name};
 }
 
-export function deletePreset(preset){
-    return { type: types.DELETE_PRESET, preset };
+export function deletePreset(){
+    return { type: types.DELETE_PRESET };
 }
 
-export function renamePreset(preset, name){
-    return { type: types.RENAME_PRESET, preset, name };
+export function renamePreset(name){
+    return { type: types.RENAME_PRESET, name };
 }
 
-export function moveUpPreset(preset){
-    return { type: types.MOVEUP_PRESET, preset };
+export function moveUpPreset(){
+    return { type: types.MOVEUP_PRESET };
 }
 
-export function moveDownPreset(preset){
-    return { type: types.MOVEDOWN_PRESET, preset };
+export function moveDownPreset(){
+    return { type: types.MOVEDOWN_PRESET };
 }

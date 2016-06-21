@@ -46,39 +46,38 @@ export default class SelectPreset extends React.Component {
 
   onRemovePreset(event){
     if(confirm("Are you sure? This cannot be undone"))
-    this.props.actions.deletePreset(this.props.presetIdx);
+    this.props.actions.deletePreset();
   }
 
   onRenamePreset(event){
     const name = prompt("Enter preset name", ""); 
-    this.props.actions.renamePreset(this.props.presetIdx, name);
+    this.props.actions.renamePreset(name);
   }
 
   onMoveUpPreset(event){
-    this.props.actions.moveUpPreset(this.props.presetIdx);
+    this.props.actions.moveUpPreset();
   }
 
   onMoveDownPreset(event){
-    this.props.actions.moveDownPreset(this.props.presetIdx);
+    this.props.actions.moveDownPreset();
   }
 
   render() {
     return (
-        <div>
-            <select onChange = {this.onChange}>
+      <div>
+        <div  className="selectPreset">
+            <select onChange = {this.onChange} value={this.props.presetIdx}>
               {this.props.presets.map((item,index) => 
-                <option value={index}>{index+1}: {item.name}</option>)}
+                <option value={index} key={index}>P-{index+1}: {item.name}</option>)}
             </select> 
-            <a href="#" onClick={this.onAddPreset}>[+]</a>
-            <a href="#" onClick={this.onRemovePreset}>[-]</a>
-            <a href="#" onClick={this.onRenamePreset}>[N]</a>
-            <a href="#" onClick={this.onMoveUpPreset}>[^]</a>
-            <a href="#" onClick={this.onMoveDownPreset}>[v]</a>
-
-            // TODO:
-            // <a href="#" onClick={this.onCopyPreset}>[C]</a>
-            // <a href="#" onClick={this.onPastePreset}>[P]</a>
+            <a href="#" onClick={this.onAddPreset} title="Add preset">[+]</a>
+            <a href="#" onClick={this.onRemovePreset} title="Delete current preset">[-]</a>
+            <a href="#" onClick={this.onRenamePreset} title="Rename current preset">[N]</a>
+            <a href="#" onClick={this.onMoveUpPreset} title="Move current preset up">[^]</a>
+            <a href="#" onClick={this.onMoveDownPreset} title="Move current preset down">[v]</a>
         </div>
+        <div className="clear"></div>
+      </div>
     );
   }
 }

@@ -18,6 +18,7 @@ export default function presetsReducer(state = initialState.controlPreset, actio
             name: action.name,
             controls: Object.assign({}, controlsApi.getAllControls())
         }); 
+        newState.presetIdx = newState.presets.length - 1;
         return newState;
     }
 
@@ -55,6 +56,56 @@ export default function presetsReducer(state = initialState.controlPreset, actio
 
       return newState2;
     }
+
+    case types.DELETE_PRESET:
+    {
+      if(state.presets.length < 2)
+        return state;
+
+      const newState2 = Object.assign({}, state);
+      newState2.presets = [...state.presets];
+      newState2.presets.splice(newState2.presetIdx, 1);
+      newState2.presetIdx--;
+      return newState2;
+    }
+    case types.RENAME_PRESET:
+    {
+      const newState2 = Object.assign({}, state);
+      newState2.presets = [...state.presets];
+      newState2.presets[newState2.presetIdx] = Object.assign({}, 
+        newState2.presets[newState2.presetIdx],
+        {name: action.name});
+      return newState2;
+    }
+    case types.MOVEUP_PRESET:
+    {
+      if(state.presets.length < 2)
+        return state;
+      if(state.presetIdx < 1)
+        return state;
+
+      const newState3 = Object.assign({}, state);
+      newState3.presets = [...state.presets];
+      const prev = newState3.presets.splice(newState3.presetIdx-1, 1);
+      newState3.presets.splice(newState3.presetIdx, 0, prev[0]); 
+      newState3.presetIdx--;
+      return newState3;
+    }
+    case types.MOVEDOWN_PRESET:
+    {
+      if(state.presets.length < 2)
+        return state;
+      if(state.presetIdx >= state.presets.length-1)
+        return state;
+
+      const newState4 = Object.assign({}, state);
+      newState4.presets = [...state.presets];
+      const next = newState4.presets.splice(newState4.presetIdx+1, 1);
+      newState4.presets.splice(newState4.presetIdx, 0, next[0]); 
+      newState4.presetIdx++;
+      return newState4;      
+    }
+
 
 
     
